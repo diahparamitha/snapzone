@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
@@ -16,5 +17,7 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [LandingController::class, 'index']);
-Route::get('/', [LandingController::class, 'nav_category']);
+Route::get('/', [LandingController::class, 'index'])->name('landing.index');
+
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'loginAkun'])->name('login');
