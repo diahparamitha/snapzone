@@ -15,6 +15,6 @@ class LandingController extends Controller
 
     public function nav_category() {
         $categories = Category::all();
-        return view('Layouts.Pengguna.Partials.navbar', compact('categories'));
+        return view('Layouts.Pengguna.main', compact('categories'));
     }
 }

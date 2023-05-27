@@ -1,4 +1,4 @@
-@extends('layouts/pengguna/main')
+@extends('Layouts/Pengguna/main')
 
 @section('content')
 
