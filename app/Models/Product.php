@@ -19,7 +19,12 @@ class Product extends Model
         return $this->belongsTo(Category::class);   //relasi tabel post ke tabel category. satu postingan memiliki satu kategori
     }
 
-    public function User() {
-        return $this->belongsTo(User::class);       //relasi tabel post ke tabel user. satu postingan dimiliki oleh satu user
+   public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function scopeUniqueData($query)
+    {
+        return $query->select('status')->distinct();
     }
 }

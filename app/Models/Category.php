@@ -19,4 +19,14 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);    //satu kategori memiliki banyak postingan
     }
+
+      public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+       public static function findBySlug($slug)
+    {
+        return self::where('slug', $slug)->first();
+    }
 }

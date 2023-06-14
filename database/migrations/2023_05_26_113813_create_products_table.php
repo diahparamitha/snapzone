@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->text('description');
-            $table->decimal('price', 8, 2);
+            $table->string('price');
             $table->integer('stok');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('image');

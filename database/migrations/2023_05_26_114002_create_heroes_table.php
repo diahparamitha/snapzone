@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('gambar');
             $table->boolean('status')->default(false);
             $table->boolean('disetujui')->default(false);
-            $table->unsignedBigInteger ('created_by');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

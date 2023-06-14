@@ -43,8 +43,34 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function isAdmin()
+   public function isAdminStaff()
+   {
+    return $this->role === 'admin' || $this->role === 'staff';
+   }
+
+    public function scopeUniqueData($query)
     {
-        return $this->role === 'admin';
+        return $query->select('role')->distinct();
     }
+
+    public function products()
+    {
+    return $this->hasMany(Product::class, 'user_id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+      public static function findByRole($role)
+    {
+        return self::where('role', $role)->first();
+    }
+
+     public function heroes()
+    {
+        return $this->hasMany(Hero::class, 'created_by');
+    }
+
 }
