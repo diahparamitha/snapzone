@@ -23,12 +23,14 @@
               <li><a href="/login">Login</a></li>
           @endif
 
+          @if(Auth::check())
           <li>
             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             <form id="logout-form" action="/logout" method="POST" style="display: none;">
               @csrf
             </form>
           </li>
+          @endif
         </ul>
       </nav><!-- .navbar -->
 

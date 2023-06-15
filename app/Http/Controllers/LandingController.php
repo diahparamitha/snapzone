@@ -93,9 +93,10 @@ class LandingController extends Controller
         $categories = Category::all();
         $tag = 'All Products';
         $title = 'Hasil Pencarian';
+        $desc = 'Jelajahi dunia melalui poto';
         $hero = Hero::all();
 
-        return view('landing.product.productList', compact('products', 'categories', 'tag', 'title', 'hero'));
+        return view('landing.product.productList', compact('products', 'categories', 'tag', 'title', 'hero', 'desc'));
     }
 
     public function detailUser($id){

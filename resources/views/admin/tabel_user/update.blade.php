@@ -59,13 +59,12 @@
 							    <label for="role">Role</label>
 							    <select class="form-control" id="role" name="role">
 							        <option disabled>Pilih Role</option>
-							        @foreach ($uniqueUsers as $roleUser)
-							            <option value="{{ $roleUser->role }}" {{ $user->role === $roleUser->role ? 'selected' : '' }}>
-							                {{ $roleUser->role }}
-							            </option>
-							        @endforeach
+							        <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
+							        <option value="staff" {{ $user->role === 'staff' ? 'selected' : '' }}>Staff</option>
+							        <option value="pengguna" {{ $user->role === 'pengguna' ? 'selected' : '' }}>Pengguna</option>
 							    </select>
 							</div>
+
 
                         		<div class="form-group mb-3">
 							  <label for="avatar">Photo</label>
