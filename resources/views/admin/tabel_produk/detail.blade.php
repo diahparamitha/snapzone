@@ -7,11 +7,11 @@
   <div class="col-md-8 mb-3">
     <div class="card">
       <div class="ratio ratio-16x9">
-        <img src="{{ asset('image_product/'. $product['image']) }}" alt="Thumbnail" class="card-img-top">
+        <img src="{{ asset('storage/image_product/'. $product['image']) }}" alt="Thumbnail" class="card-img-top">
       </div>
       <div class="card-body">
         <div class="d-flex align-items-center mb-3">
-          <img src="{{ asset('avatar/'. $product->user->avatar) }}" alt="Profile" class="rounded-circle me-2" width="40" height="40">
+          <img src="{{ asset('storage/'. $product->user->avatar) }}" alt="Profile" class="rounded-circle me-2" width="40" height="40">
           <div>
             <h5 class="card-title">{{ $product->name }}</h5>
             <p class="card-text">Deskripsi: {{ $product->description }}</p>

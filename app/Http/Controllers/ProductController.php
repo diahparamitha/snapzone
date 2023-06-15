@@ -66,8 +66,8 @@ class ProductController extends Controller
 	}
 
 	public function detail($id){
-		$title = Product::find($id)->pluck('name')->first();
 		$product = Product::with('user')->find($id);
+		$title = $product->name;
 		$slug = Category::all();
 		$uniqueUsers = User::uniqueData()->get();
 
