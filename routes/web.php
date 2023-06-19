@@ -25,6 +25,8 @@ Route::get('/product', [LandingController::class, 'product']);
 Route::get('/product/detail/{id}', [LandingController::class, 'productDetail'])->middleware('checkLogin');
 Route::get('/product/categories/{slug}', [LandingController::class, 'productByCategory']);
 Route::get('/search', [LandingController::class, 'search'])->name('product.search');
+Route::get('/user/create', [LandingController::class, 'create']);
+Route::post('/user/create', [LandingController::class, 'createUser']);
 Route::get('/user/detail/{id}', [LandingController::class, 'detailUser']);
 Route::get('/user/update/{id}', [LandingController::class, 'updateUser']);
 Route::post('/user/update/{id}', [LandingController::class, 'updateUser1']);

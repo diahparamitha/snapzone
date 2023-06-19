@@ -153,4 +153,34 @@ class LandingController extends Controller
         $user->save();
         return redirect('/user/detail/'.$id)->with('update', 'Kamu berhasil memperbaharui profil!');
     }
+
+    public function create(){
+        return view('landing.user.create', [
+            'title' => 'New User',
+            'products' => Product::all(),
+            'categories' => Category::all(),
+            'hero' => Hero::all(),
+        ]);
+    }
+
+    public function createUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:3|regex:/^[A-Z][A-Za-z\s]+$/',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|min:12|max:12',
+            'address' => 'required|min:10|max:100',
+            'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])/',
+        ]);
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = bcrypt($request->password);
+
+        $user->save();
+        return redirect('/')->with('success', 'Kamu berhasil daftar!');
+    }
 }

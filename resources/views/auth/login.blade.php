@@ -26,7 +26,7 @@
         <label for="password"> Password </label><br>
         <input type="password" id="password" name="password" placeholder="Enter password"><br>
         <button type="submit" class="btn btn-primary" name="login">Login</button>
-        <p style="text-align: center;"> Belum punya akun? Daftar <a href="/admin/users/create">disini!</a></p>
+        <p style="text-align: center;"> Belum punya akun? Daftar <a href="/user/create">disini!</a></p>
     </form>
     
   </body>
