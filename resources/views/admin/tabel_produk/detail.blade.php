@@ -17,7 +17,7 @@
             <p class="card-text">Deskripsi: {{ $product->description }}</p>
             <p class="card-text">Harga: {{ $product->price }}</p>
             <p class="card-text">Stok: {{ $product->stok }}</p>
-            <p class="card-text"><small class="text-muted">{{ $product->user->name }} | {{ $product->created_at->diffForHumans() }}</small></p>
+            <p class="card-text"><small class="text-muted">{{ $product->user->name }} | {{ $product->created_at }}</small></p>
           </div>
         </div>
       </div>
