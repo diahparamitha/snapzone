@@ -1,7 +1,52 @@
 @extends('admin/main')
 
-@section('content')
+<script>
+    function updateStatus(heroId, status) {
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/admin/update-status/' + heroId;
+        form.style.display = 'none';
 
+        var tokenInput = document.createElement('input');
+        tokenInput.type = 'hidden';
+        tokenInput.name = '_token';
+        tokenInput.value = '{{ csrf_token() }}';
+        form.appendChild(tokenInput);
+
+        var statusInput = document.createElement('input');
+        statusInput.type = 'hidden';
+        statusInput.name = 'status';
+        statusInput.value = status;
+        form.appendChild(statusInput);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function updateDisetujui(heroId, accept) {
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/admin/update-disetujui/' + heroId;
+        form.style.display = 'none';
+
+        var tokenInput = document.createElement('input');
+        tokenInput.type = 'hidden';
+        tokenInput.name = '_token';
+        tokenInput.value = '{{ csrf_token() }}';
+        form.appendChild(tokenInput);
+
+        var acceptInput = document.createElement('input');
+        acceptInput.type = 'hidden';
+        acceptInput.name = 'accept';
+        acceptInput.value = accept;
+        form.appendChild(acceptInput);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+
+@section('content')
 
 @if(session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
@@ -59,21 +104,21 @@
                     @if(auth()->user()->role === 'admin')
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonDisetujui{{$hero->id}}" data-bs-toggle="dropdown" aria-expanded="false">
-                        @if($hero->disetujui === 1)
-                            Disetujui
-                        @else
-                            Ditolak
-                        @endif
+                            @if($hero->disetujui === 1)
+                                Disetujui
+                            @else
+                                Ditolak
+                            @endif
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDisetujui{{$hero->id}}">
-                        <li>
-                            <a class="dropdown-item" href="#" onclick="updateDisetujui('{{ $hero->id }}', 1)">Disetujui</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#" onclick="updateDisetujui('{{ $hero->id }}', 0)">Ditolak</a>
-                        </li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDisetujui{{$hero->id}}">
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="updateDisetujui('{{ $hero->id }}', 1)">Disetujui</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="updateDisetujui('{{ $hero->id }}', 0)">Ditolak</a>
+                            </li>
                         </ul>
-                        </div>
+                    </div>
                         @endif
                         
                     @if($hero->disetujui === 1)
@@ -104,52 +149,7 @@
 </div>
 
 <script>
-    function updateStatus(heroId, status) {
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/admin/update-status/' + heroId;
-        form.style.display = 'none';
 
-        var tokenInput = document.createElement('input');
-        tokenInput.type = 'hidden';
-        tokenInput.name = '_token';
-        tokenInput.value = '{{ csrf_token() }}';
-        form.appendChild(tokenInput);
-
-        var statusInput = document.createElement('input');
-        statusInput.type = 'hidden';
-        statusInput.name = 'status';
-        statusInput.value = status;
-        form.appendChild(statusInput);
-
-        document.body.appendChild(form);
-        form.submit();
-    }
-
-    function updateDisetujui(heroId, accept) {
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/admin/update-disetujui/' + heroId;
-        form.style.display = 'none';
-
-        var tokenInput = document.createElement('input');
-        tokenInput.type = 'hidden';
-        tokenInput.name = '_token';
-        tokenInput.value = '{{ csrf_token() }}';
-        form.appendChild(tokenInput);
-
-        var acceptInput = document.createElement('input');
-        acceptInput.type = 'hidden';
-        acceptInput.name = 'accept';
-        acceptInput.value = accept;
-        form.appendChild(acceptInput);
-
-        document.body.appendChild(form);
-        form.submit();
-    }
-</script>
-
-<script>
     function showEditConfirmation(heroJudul, heroId) {
         Swal.fire({
             title: 'Konfirmasi',
@@ -167,9 +167,7 @@
             }
         });
     }
-</script>
 
-<script>
     function showConfirmation(heroJudul, heroId) {
         Swal.fire({
             title: 'Konfirmasi',
@@ -187,6 +185,7 @@
             }
         });
     }
+
 </script>
 
 @endsection
