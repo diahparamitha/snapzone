@@ -187,5 +187,6 @@
     }
 
 </script>
+@vite(['resources/js/app.js'])
 
 @endsection
